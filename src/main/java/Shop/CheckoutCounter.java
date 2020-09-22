@@ -16,13 +16,22 @@ public class CheckoutCounter {
 
         Customer[] customer1 = {customer, employee};
 
-        for (Customer a : customer1) {
+        for (int i = 0; i < customer1.length; i++) {
             boolean fit = true;
-            System.out.println(a);
-            System.out.println("Price: " + shop.calcTotal(a.getClothingItems()));
+            System.out.println(customer1[i]);
+            System.out.print("Price: ");
+            if(customer1[i] instanceof Employee){
+                System.out.println(shop.employeePriceAfterDiscount((Employee) customer1[i]));
+
+            }
+            else{
+                System.out.println(shop.calcTotal(customer1[i].getClothingItems()));
+            }
+
             System.out.print("Does it fit?");
-            for (Clothing b : a.getClothingItems()) {
-                if(!b.isAFit(a)){
+            for (Clothing b : customer1[i].getClothingItems()) {
+                shop.measure(customer1[i]);
+                if(!b.isAFit(customer1[i])){
                     fit = false;
                 }
             }

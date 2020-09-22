@@ -17,10 +17,10 @@ public class ShopApp {
 
     public double employeePriceAfterDiscount(Employee a){
         double total = 0;
-        for (Clothing x : a.getClothingItems() ){
+        for (Clothing x : a.getClothingItems()){
             total += x.getPrice();
         }
-        total -= total* a.getDISCOUNT();
+        total -= total*a.getDISCOUNT();
         total += total*TAX;
         return total;
     }
